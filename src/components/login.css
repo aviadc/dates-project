@@ -1,0 +1,15 @@
+.login-container{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form{
+  background-color: aquamarine;
+  height: 30vh;
+  width: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
