@@ -1,8 +1,12 @@
-import React from 'react'
+import React , {useState} from 'react'
 
 function Signup() {
   const  [email,setEmail] =  useState();
   const [password] =  useState();
+
+  const isEmailExist = ()=>{
+    
+  }
   return (
     <div className='login-container'>
       <div className='login-form'> 
