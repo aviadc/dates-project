@@ -1,19 +1,20 @@
-import React , {useState} from 'react'
+import React , {useState,useContext} from 'react'
 import "./login.css"
 import { Link } from 'react-router-dom';
-import Signup from './Signup';
+import {UserListContext} from './UsersListContext';
 
 function Login() {
 
-  const  [email,setEmail] =  useState();
+  const [email,setEmail] =  useState();
   const [password,setPassword] =  useState();
+  const context = useContext(UserListContext);
 
   const login = ()=>{
-
+    console.log(context);
   }
 
   const isEmailExist =()=>{
-    
+
   }
 
   
@@ -27,7 +28,7 @@ function Login() {
         <div>
           Password <input type="password" onChange={(e)=>setPassword(e.target.value)}/>
         </div>
-        <button>Log In</button>
+        <button onClick={login}>Log In</button>
         <h3>didn't have an acount? <Link to={"/signup"} > Sign up </Link> </h3>
       </div>
     </div>
