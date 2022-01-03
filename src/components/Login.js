@@ -1,20 +1,38 @@
 import React , {useState,useContext} from 'react'
 import "./login.css"
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {UserListContext} from './UsersListContext';
 
-function Login() {
+function Login(props) {
 
   const [email,setEmail] =  useState();
   const [password,setPassword] =  useState();
   const context = useContext(UserListContext);
 
   const login = ()=>{
-    console.log(context);
+    isRightCredentials();
   }
 
   const isEmailExist =()=>{
+    return context.find((user)=>{
+     return user.email===email;
+    })
+  }
 
+  const isRightCredentials = ()=>{
+    const user =  isEmailExist(email);
+    console.log(user);
+    console.log(props);
+    if(user){
+      if(password===user.password){
+        localStorage.setItem("currentUser",JSON.stringify(user))
+        props.history.push(`/users/${user.key}`);
+      }else{
+        console.log("password incorrect")
+      }
+    }else{
+      console.log("email incorrect")
+    }
   }
 
   

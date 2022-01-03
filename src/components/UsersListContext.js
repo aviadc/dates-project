@@ -20,7 +20,7 @@ function UsersListContextProvider(props) {
       }
     },[])
   
-  const hey = "hey";
+
   return (
     <UserListContext.Provider value={usersList}>
         {props.children}

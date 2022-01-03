@@ -21,7 +21,7 @@ const App = ()=>{
           <Route path="/" exact component={Login} />
         </UsersListContextProvider>
         <Route path="/signup" exact component={Signup} />
-        <Route path="/users:key" exact component={Users} />
+        <Route path="/users/:key" exact component={Users} />
         {/* <Route path="invoices" component={} /> */}
       </Router>
     </div>
