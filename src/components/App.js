@@ -19,8 +19,8 @@ const App = ()=>{
       <Router>
         <UsersListContextProvider>
           <Route path="/" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
         </UsersListContextProvider>
-        <Route path="/signup" exact component={Signup} />
         <Route path="/users/:key" exact component={Users} />
         {/* <Route path="invoices" component={} /> */}
       </Router>

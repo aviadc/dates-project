@@ -5,7 +5,8 @@ function Users(props) {
   return (
     <div>
       {console.log(localStorage)}
-      <h3>{user.name}</h3>
+      <h3>{user.firstName}</h3>
+      <button onClick={()=>props.history.goBack()}>go back</button>
     </div>
   )
 }

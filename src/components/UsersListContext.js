@@ -18,7 +18,7 @@ function UsersListContextProvider(props) {
       if(usersList.length===0){
         fetch();
       }
-    },[])
+    },[usersList])
   
 
   return (
