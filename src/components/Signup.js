@@ -137,7 +137,7 @@ function Signup(props) {
         key: uuidv4(),
       }
       try{
-        // const data = await datesApi.post("dates",user);
+        context.setUsersList([...context.usersList,user]);
         localStorage.setItem("currentUser",JSON.stringify(user))
         props.history.push(`/users/${user.key}`);
         console.log(props);

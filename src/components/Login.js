@@ -14,7 +14,7 @@ function Login(props) {
   }
 
   const isEmailExist =()=>{
-    return context.find((user)=>{
+    return context.usersList.find((user)=>{
      return user.email===email;
     })
   }

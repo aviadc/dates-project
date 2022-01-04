@@ -1,0 +1,9 @@
+.card{
+  border: 1px solid black;
+}
+
+.matched-container{
+  display: grid;
+  grid-template-columns: minmax(100px, max-content)
+  repeat(auto-fill, 200px) 20%;
+}

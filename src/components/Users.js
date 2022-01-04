@@ -1,4 +1,5 @@
 import React , {useState} from 'react'
+import { Link } from 'react-router-dom';
 
 function Users(props) {
   const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -6,7 +7,7 @@ function Users(props) {
     <div>
       <div className='navbar'>
         <ul>
-          <li>Matched</li>
+          <li> <Link to={`/matched/${user.key}`}>Matched</Link> </li>
           <li>Likes you</li>
           <li></li>
         </ul>
