@@ -8,7 +8,9 @@ import "../index.css"
 import Login from "./Login";
 import Signup from "./Signup";
 import Users from "./Users";
+import Matched from "./Matched";
 import UsersListContextProvider from "./UsersListContext";
+import Likes from "./Likes";
 
 const App = ()=>{
 
@@ -20,9 +22,10 @@ const App = ()=>{
         <UsersListContextProvider>
           <Route path="/" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
+          <Route path="/users/:key" exact component={Users} />
+          <Route path="/matched/:key" exact component={Matched} />
+          <Route path="/likes" exact component={Likes} />
         </UsersListContextProvider>
-        <Route path="/users/:key" exact component={Users} />
-        {/* <Route path="invoices" component={} /> */}
       </Router>
     </div>
   )

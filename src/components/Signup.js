@@ -9,15 +9,15 @@ import "./signup.css"
 
 
 function Signup(props) {
-  const [email,setEmail] =  useState();
-  const [password,setPassword] =  useState();
-  const [firstName,setFirstName] =  useState();
-  const [lastName,setLastName] =  useState();
-  const [age,setAge] =  useState();
-  const [phoneNumber,setPhoneNumber] =  useState();
-  const [gender,setGender] =  useState();
-  const [lookingFor,setLookingFor] =  useState();
-  const [image,setImage] = useState();
+  const [email,setEmail] =  useState("");
+  const [password,setPassword] =  useState("");
+  const [firstName,setFirstName] =  useState("");
+  const [lastName,setLastName] =  useState("");
+  const [age,setAge] =  useState("");
+  const [phoneNumber,setPhoneNumber] =  useState("");
+  const [gender,setGender] =  useState("");
+  const [lookingFor,setLookingFor] =  useState("");
+  const [image,setImage] = useState("");
   const [imgUrl,setImgUrl] = useState("");
   const [hobbies,setHobbies] = useState([]);
   const [massagesToTheuser,setMassagesToTheuser] = useState("");
@@ -100,12 +100,12 @@ function Signup(props) {
   } 
 
   const checkValidation = ()=>{
-    if(isEmailExist){
+    if(isEmailExist()){
       setMassagesToTheuser(massagesToTheuser+"\n mail already exist");
       return false;
     }
-    return !validEmail()||!validPassword()||!validHobbies()||!validAge()||!validImage()||
-    !validName()||!validSelect()||!validPhoneNumber()
+    return validEmail()||validPassword()||validHobbies()||validAge()||validImage()||
+    validName()||validSelect()||validPhoneNumber()
   }
 
   const handleHobbies = (e)=>{
@@ -121,24 +121,29 @@ function Signup(props) {
   }
 
   const handleSignUp = async ()=>{
-    console.log(hobbies);
-    const user = {
-      email: email,
-      password: password,
-      firstName: firstName,
-      lastName: lastName,
-      age: age,
-      phoneNumber: phoneNumber,
-      gender: gender,
-      lookingFor: lookingFor,
-      hobbies: hobbies,
-      imgUrl: imgUrl,
-      key: uuidv4(),
-    }
-    try{
-      const data = await datesApi.post("dates",user);
-    }catch(e){
-      console.log(e);
+    if(true){
+      console.log(hobbies);
+      const user = {
+        email: email,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        age: age,
+        phoneNumber: phoneNumber,
+        gender: gender,
+        lookingFor: lookingFor,
+        hobbies: hobbies,
+        imgUrl: imgUrl,
+        key: uuidv4(),
+      }
+      try{
+        // const data = await datesApi.post("dates",user);
+        localStorage.setItem("currentUser",JSON.stringify(user))
+        props.history.push(`/users/${user.key}`);
+        console.log(props);
+      }catch(e){
+        console.log(e);
+      }
     }
   }
 
