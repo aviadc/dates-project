@@ -1,0 +1,17 @@
+.signup-container{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.6rem;
+}
+
+.signup-form{
+  background-color: aquamarine;
+  height: 80vh;
+  width: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
