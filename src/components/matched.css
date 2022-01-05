@@ -3,7 +3,20 @@
 }
 
 .matched-container{
-  display: grid;
-  grid-template-columns: minmax(100px, max-content)
-  repeat(auto-fill, 200px) 20%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  
+}
+
+.card{
+  border-radius: 15px ;
+}
+
+.card-imgDetails-container{
+  display: flex;
+  margin-left: 0.7rem;
+}
+.card-imgDetails-container >*{
+  margin: 0.4rem;
 }

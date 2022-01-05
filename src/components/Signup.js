@@ -179,7 +179,7 @@ function Signup(props) {
         context.setUsersList([...context.usersList,user]);
         localStorage.setItem("currentUser",JSON.stringify(user));
         await datesApi.post("dates",user);
-        props.history.push(`/matched}`);
+        props.history.push(`/matched`);
         console.log(props);
       }catch(e){
         console.log(e);
@@ -209,27 +209,27 @@ function Signup(props) {
       <div className='signup-form'> 
         <div>
           <input className='input-text-signup' type="email" placeholder="email" onChange={(e)=>setEmail(e.target.value)}/> 
-          <span>{emailError}</span>
+          <span className='error'>{emailError}</span>
         </div>
         <div>
           <input className='input-text-signup' type="password" placeholder='password (min 6 digits)' onChange={(e)=>setPassword(e.target.value)}/>
-          <span>{passwordError}</span>
+          <span className='error'>{passwordError}</span>
         </div>
         <div>
            <input className='input-text-signup' type="text" placeholder="first name" onChange={(e)=>setFirstName(e.target.value)}/>
-          <span>{firstNameError}</span>
+          <span className='error'>{firstNameError}</span>
         </div>
         <div>
           <input className='input-text-signup' type="text" placeholder="last name" onChange={(e)=>setLastName(e.target.value)}/>
-          <span>{lastNameError}</span>
+          <span className='error'>{lastNameError}</span>
         </div>
         <div>
           <input className='input-text-signup' type="text" placeholder='phone number (10 digits)' onChange={(e)=>setPhoneNumber(e.target.value)}/>
-          <span>{phoneNumberError}</span>
+          <span className='error'>{phoneNumberError}</span>
         </div>
         <div>
           <input className='input-text-signup' type="text"  placeholder='age' onChange={(e)=>setAge(e.target.value)}/>
-          <span>{ageError}</span>
+          <span className='error'>{ageError}</span>
         </div>
         <div>
           <select className='input-text-signup' onChange={(e)=>setGender(e.target.value)}>
@@ -237,7 +237,7 @@ function Signup(props) {
             <option value="male">male</option>
             <option value="female">femael</option>  
           </select>
-          <span>{genderError}</span>
+          <span className='error'>{genderError}</span>
         </div>
         <div>
           <select className='input-text-signup' onChange={(e)=>setLookingFor(e.target.value)}>
@@ -245,7 +245,7 @@ function Signup(props) {
             <option value="male">male</option>
             <option value="female">femael</option>  
           </select>
-          <span>{lookingForError}</span>
+          <span className='error'>{lookingForError}</span>
         </div>
         <div>
           <form>
@@ -294,7 +294,7 @@ function Signup(props) {
               <label htmlFor="army">army</label>
               <input type="checkbox" id="gadgets" name="gadgets" onChange={handleHobbies}/>
               <label htmlFor="gadgets">gadgets</label>
-              <input type="checkbox" id="scienceFiction" name="scienceFiction" onChange={handleHobbies}/>
+              <input type="checkbox" id="Sci-Fi" name="scienceFiction" onChange={handleHobbies}/>
               <label htmlFor="scienceFiction">Sci-Fi</label>
               <input type="checkbox" id="gaming" name="gaming" onChange={handleHobbies}/>
               <label htmlFor="gaming">gaming</label>
@@ -303,7 +303,7 @@ function Signup(props) {
         </div>
         <div>
         <h3 className='signup-inner-title'>image</h3>
-        <span>{imageError}</span>
+        <span className='error'>{imageError}</span>
           <input type="file" onChange={(e)=>setImage(e.target.files[0])}/>
           <button onClick={uploadImage}>upload image</button>  
         </div>

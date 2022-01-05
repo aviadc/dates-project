@@ -76,11 +76,17 @@ function Matched(props) {
   const displayusers = ()=>{
     return matched().map((user)=>{
       return <div className='card' key={user.key}>
-        <Image cloudName="dten2xlir"  publicId={user.imgUrl}/>
-        <h4>{user.firstName}</h4>
-        <h4>{user.age}</h4>
-        <h4>{user.hobbies.join(' ')}</h4>
-        <button>more details</button>
+        <div className='card-imgDetails-container'>
+          <div>
+            <Image cloudName="dten2xlir"  publicId={user.imgUrl} height="80" width="80"/>
+          </div>
+          <div className='card-main-details'>
+            <h4>{user.firstName}</h4>
+            <h4>{user.age}</h4>
+          </div>
+        </div>
+        <h4>hobbies: {user.hobbies.join(' ')}</h4>
+        {/* <button>more details</button> */}
         <button onClick={()=>handleLike(user)} >like</button>
       </div>
     })
