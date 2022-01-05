@@ -67,11 +67,14 @@ function UsersListContextProvider(props) {
           console.log(e);
         }
       }
+      if(false){
+        createusers();
+      }
       if(usersList.length===0){
         // createusers(); 
         fetch();
       }
-    },[setUsersList])
+    },[setUsersList,usersList])
   
 
   return (
