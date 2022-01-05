@@ -5,17 +5,23 @@ import "./navbar.css"
 function Navbar(props) {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const handleLogOut = ()=>{
-    props.history.go(-2);
     localStorage.clear();
   }
+  const back = () =>{
+   console.log(user);
+   console.log(props);
+  }
+
   return (
     <div className='navbar'>
         <ul className='navbar-list'>
           <li> <Link to={`/matched/${user.key}`}>Matched</Link> </li>
           <li> <Link to={`/likes/${user.key}`}>Likes</Link> </li>
           <li> <Link to={`/likes/${user.key}`}>profile</Link> </li>
-          <li> <button onClick={handleLogOut}>log out</button> </li>
-          <li></li>
+          <li> <button onClick={handleLogOut}><Link to={"/"}> log out</Link> </button> </li>
+          <li> <button onClick={back}>Delete user</button> </li>
+          <li> <button><Link to={"/"}> back to log in</Link> </button> </li>
+      
         </ul>
     </div>
   )

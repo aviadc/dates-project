@@ -19,7 +19,6 @@ function Signup(props) {
   const [image,setImage] = useState("");
   const [imgUrl,setImgUrl] = useState("");
   const [hobbies,setHobbies] = useState([]);
-  const [massagesToTheuser,setMassagesToTheuser] = useState("");
   const context = useContext(UserListContext);
 
   const [emailError,setEmailError] =  useState("");
@@ -31,7 +30,7 @@ function Signup(props) {
   const [genderError,setGenderError] =  useState("");
   const [lookingForError,setLookingForError] =  useState("");
   const [imageError,setImageError] = useState("");
-  const [hobbiesError,setHobbiesError] = useState([]);
+  const [hobbiesError,setHobbiesError] = useState("");
  
  
 
@@ -45,6 +44,7 @@ function Signup(props) {
 
   const validEmail = (e)=>{
     if(email.includes('@')){
+      setEmailError("");
       return true;
     }else{
       setEmailError("email is not valid");
@@ -53,6 +53,7 @@ function Signup(props) {
   }
   const validPassword = (e)=>{
     if(password.length>5){
+      setPasswordError("");
       return true;
     }else{
       setPasswordError("password not is valid");
@@ -61,6 +62,7 @@ function Signup(props) {
   }
   const validPhoneNumber = (e)=>{
     if(parseInt(phoneNumber)&&phoneNumber.length===10){
+      setPhoneNumberError("");
       return true;
     }else{
       setPhoneNumberError("phone number is not valid");
@@ -70,42 +72,68 @@ function Signup(props) {
   
   const validAge = (e)=>{
     if(parseInt(age)){
+      setAgeError("");
       return true;
     }else{
-      setMassagesToTheuser(massagesToTheuser+"\n age is not valid");
+      setAgeError("age is not valid");
       return false;
     }
   }
 
-  const validSelect = ()=>{
-    if(gender==="gender:"||lookingFor==="looking for:"){
-      setMassagesToTheuser(massagesToTheuser+"\n gender is not valid");
+  const validGender = ()=>{
+    if(gender==="gender:"||gender===""){
+      setGenderError("gender is not valid");
       return false;
     }else{
+      setGenderError("");
+      return true;
+    }
+  }
+
+  const validLookingFor = ()=>{
+    if(lookingFor==="looking for:"||lookingFor===""){
+      setLookingForError("looking for gender is not valid");
+      return false;
+    }else{
+      setLookingForError("");
       return true;
     }
   }
 
   const validHobbies=()=>{
     if(hobbies.length!==5){
-      setMassagesToTheuser(massagesToTheuser+"\n hobbies are not valid");
+      setHobbiesError("hobbies are not valid");
+      return false;
     }else{
+      setHobbiesError("");
       return true;
     }
   } 
   
-  const validName=()=>{
-    if(!firstName||!lastName){
-      setMassagesToTheuser(massagesToTheuser+"\n name is not valid");
+  const validFirstName=()=>{
+    if(firstName===""){
+      setFirstNameError("first name is not valid");
     }else{
+      setFirstNameError("");
+      return true;
+    }
+  } 
+
+  const validLastName=()=>{
+    if(lastName===""){
+     setLastNameError("last name is not valid");
+    }else{
+      setLastNameError("");
       return true;
     }
   } 
 
   const validImage=()=>{
     if(!imgUrl){
-      setMassagesToTheuser(massagesToTheuser+"\n image is not valid");
+     setImageError("image is not valid");
+     return false;
     }else{
+      setImageError("");
       return true;
     }
   } 
@@ -115,8 +143,8 @@ function Signup(props) {
       setEmailError("mail already exist");
       return false;
     }
-    return validEmail()&&validPassword()&&validHobbies()&&validAge()&&validImage()&&
-    validName()&&validSelect()&&validPhoneNumber()
+    return validEmail()&&validPassword()&&validFirstName()&&validLastName()&&validPhoneNumber()&&validAge()&&validGender()&&
+    validLookingFor()&&validHobbies()&&validImage();
   }
 
   const handleHobbies = (e)=>{

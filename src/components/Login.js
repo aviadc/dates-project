@@ -35,6 +35,15 @@ function Login(props) {
     }
   }
 
+  const randomNumber = (from,to)=>{
+    return Math.floor(Math.random()*to)+from
+  }
+
+  const local = ()=>{
+    console.log(localStorage);
+    console.log(randomNumber(5,5));
+  }
+
   
   return (
     <div className='login-container'>
@@ -47,6 +56,7 @@ function Login(props) {
           Password <input type="password" onChange={(e)=>setPassword(e.target.value)}/>
         </div>
         <button onClick={login}>Log In</button>
+        <button onClick={local}>local</button>
         <h3>didn't have an acount? <Link to={"/signup"} > Sign up </Link> </h3>
       </div>
     </div>

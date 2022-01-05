@@ -26,8 +26,7 @@ const App = ()=>{
           <Route path="/users/:key" exact component={Users} />
           <Route path="/matched/:key" exact component={Matched} />
           <Route path="/likes/:key" exact component={Likes} />
-        </UsersListContextProvider>
-       
+        </UsersListContextProvider> 
       </Router>
     </div>
   )

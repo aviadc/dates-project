@@ -4,7 +4,7 @@ import {Image} from 'cloudinary-react';
 import "./matched.css"
 import Navbar from './Navbar';
 
-function Matched() {
+function Matched(props) {
   const context = useContext(UserListContext);
   // useEffect(()=>{
 

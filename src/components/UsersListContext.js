@@ -9,6 +9,13 @@ function UsersListContextProvider(props) {
  const [usersList,setUsersList] = useState([]);
     useEffect(()=>{
       const createusers = async ()=>{
+        const myHobbies = ["reading","hiking","tv","sport","music","computers","writing","space","architecture",
+        "caffe","dancing","extreme","cooking","fashion",
+        "history","drawing","army","gadgets","scienceFiction","gaming"];
+        const randomNumber = (from,to)=>{
+          return Math.floor(Math.random()*to)+from
+        }
+      
         try{
           const {list} = await datesApi.get("dates");
           console.log("list",list);
@@ -25,7 +32,8 @@ function UsersListContextProvider(props) {
                 phoneNumber: user.phone,
                 gender: user.gender,
                 lookingFor: user.gender==="male"? "female":"male",
-                hobbies: ["reading","hiking","sport","music","tv"],
+                hobbies: [myHobbies[randomNumber(0,4)],myHobbies[randomNumber(4,4)],
+                myHobbies[randomNumber(8,4)],myHobbies[randomNumber(12,4)],myHobbies[randomNumber(16,4)]],
                 imgUrl: user.picture.medium,
                 key:user.login.uuid,
               }
