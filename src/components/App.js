@@ -11,6 +11,7 @@ import Users from "./Users";
 import Matched from "./Matched";
 import UsersListContextProvider from "./UsersListContext";
 import Likes from "./Likes";
+import Navbar from "./Navbar";
 
 const App = ()=>{
 
@@ -24,8 +25,9 @@ const App = ()=>{
           <Route path="/signup" exact component={Signup} />
           <Route path="/users/:key" exact component={Users} />
           <Route path="/matched/:key" exact component={Matched} />
-          <Route path="/likes" exact component={Likes} />
+          <Route path="/likes/:key" exact component={Likes} />
         </UsersListContextProvider>
+       
       </Router>
     </div>
   )

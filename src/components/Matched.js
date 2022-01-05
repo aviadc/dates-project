@@ -2,6 +2,7 @@ import React , {useState,useContext, useEffect} from 'react'
 import {UserListContext} from './UsersListContext';
 import {Image} from 'cloudinary-react';
 import "./matched.css"
+import Navbar from './Navbar';
 
 function Matched() {
   const context = useContext(UserListContext);
@@ -21,7 +22,8 @@ function Matched() {
   }
   return (
     <>
-     <h2>Matched</h2>
+      <Navbar />
+      <h2>Matched</h2>
     <div className='matched-container'>
       {displayusers()}
     </div>

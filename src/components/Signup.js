@@ -1,7 +1,6 @@
 import React , {useState,useContext, useRef} from 'react'
 import axios from 'axios';
 import datesApi from './Api';
-import {Image} from 'cloudinary-react';
 import {UserListContext} from './UsersListContext';
 import { v4 as uuidv4 } from 'uuid';
 import "./signup.css"
@@ -22,12 +21,24 @@ function Signup(props) {
   const [hobbies,setHobbies] = useState([]);
   const [massagesToTheuser,setMassagesToTheuser] = useState("");
   const context = useContext(UserListContext);
+
+  const [emailError,setEmailError] =  useState("");
+  const [passwordError,setPasswordError] =  useState("");
+  const [firstNameError,setFirstNameError] =  useState("");
+  const [lastNameError,setLastNameError] =  useState("");
+  const [ageError,setAgeError] =  useState("");
+  const [phoneNumberError,setPhoneNumberError] =  useState("");
+  const [genderError,setGenderError] =  useState("");
+  const [lookingForError,setLookingForError] =  useState("");
+  const [imageError,setImageError] = useState("");
+  const [hobbiesError,setHobbiesError] = useState([]);
+ 
  
 
 
   
   const isEmailExist = ()=>{
-    return context.find((user)=>{
+    return context.usersList.find((user)=>{
       return user.email===email;
     })
   }
@@ -36,7 +47,7 @@ function Signup(props) {
     if(email.includes('@')){
       return true;
     }else{
-      setMassagesToTheuser(massagesToTheuser+"\n email is not valid");
+      setEmailError("email is not valid");
       return false;
     }
   }
@@ -44,7 +55,7 @@ function Signup(props) {
     if(password.length>5){
       return true;
     }else{
-      setMassagesToTheuser(massagesToTheuser+"\n password not is valid");
+      setPasswordError("password not is valid");
       return false;
     }
   }
@@ -52,7 +63,7 @@ function Signup(props) {
     if(parseInt(phoneNumber)&&phoneNumber.length===10){
       return true;
     }else{
-      setMassagesToTheuser(massagesToTheuser+"\n phone number is not valid");
+      setPhoneNumberError("phone number is not valid");
       return false;
     }
   }
@@ -101,11 +112,11 @@ function Signup(props) {
 
   const checkValidation = ()=>{
     if(isEmailExist()){
-      setMassagesToTheuser(massagesToTheuser+"\n mail already exist");
+      setEmailError("mail already exist");
       return false;
     }
-    return validEmail()||validPassword()||validHobbies()||validAge()||validImage()||
-    validName()||validSelect()||validPhoneNumber()
+    return validEmail()&&validPassword()&&validHobbies()&&validAge()&&validImage()&&
+    validName()&&validSelect()&&validPhoneNumber()
   }
 
   const handleHobbies = (e)=>{
@@ -121,7 +132,7 @@ function Signup(props) {
   }
 
   const handleSignUp = async ()=>{
-    if(true){
+    if(checkValidation()){
       console.log(hobbies);
       const user = {
         email: email,
@@ -138,13 +149,16 @@ function Signup(props) {
       }
       try{
         context.setUsersList([...context.usersList,user]);
-        localStorage.setItem("currentUser",JSON.stringify(user))
-        props.history.push(`/users/${user.key}`);
+        localStorage.setItem("currentUser",JSON.stringify(user));
+        await datesApi.post("dates",user);
+        props.history.push(`/matched/${user.key}`);
         console.log(props);
       }catch(e){
         console.log(e);
       }
     }
+    console.log(context.usersList);
+    console.log(checkValidation());
   }
 
   const uploadImage= async (e)=>{
@@ -166,22 +180,28 @@ function Signup(props) {
       <div className='signup-form'> 
         <h3>Sign up</h3>
         <div>
-          email <input type="email" onChange={(e)=>setEmail(e.target.value)}/>
+          email <input type="email" onChange={(e)=>setEmail(e.target.value)}/> 
+          <span>{emailError}</span>
         </div>
         <div>
           Password <input type="password" placeholder='minimum 6 digits' onChange={(e)=>setPassword(e.target.value)}/>
+          <span>{passwordError}</span>
         </div>
         <div>
           first name <input type="text" onChange={(e)=>setFirstName(e.target.value)}/>
+          <span>{firstNameError}</span>
         </div>
         <div>
           last name <input type="text" onChange={(e)=>setLastName(e.target.value)}/>
+          <span>{lastNameError}</span>
         </div>
         <div>
           phone number <input type="text" placeholder='10 digits' onChange={(e)=>setPhoneNumber(e.target.value)}/>
+          <span>{phoneNumberError}</span>
         </div>
         <div>
           age <input type="text" onChange={(e)=>setAge(e.target.value)}/>
+          <span>{ageError}</span>
         </div>
         <div>
           <select onChange={(e)=>setGender(e.target.value)}>
@@ -189,6 +209,7 @@ function Signup(props) {
             <option value="male">male</option>
             <option value="female">femael</option>  
           </select>
+          <span>{genderError}</span>
         </div>
         <div>
           <select onChange={(e)=>setLookingFor(e.target.value)}>
@@ -196,10 +217,12 @@ function Signup(props) {
             <option value="male">male</option>
             <option value="female">femael</option>  
           </select>
+          <span>{lookingForError}</span>
         </div>
         <div>
           <form>
             <h3>Hobbies (pick 5)</h3>
+            <span>{hobbiesError}</span>
             <div>
               <input type="checkbox" id="reading" name="reading" onChange={handleHobbies} />
               <label htmlFor="reading">reading</label>
@@ -252,6 +275,7 @@ function Signup(props) {
         </div>
         <div>
         <h3>image</h3>
+        <span>{imageError}</span>
           <input type="file" onChange={(e)=>setImage(e.target.files[0])}/>
           <button onClick={uploadImage}>upload image</button>  
         </div>
@@ -260,14 +284,6 @@ function Signup(props) {
           <button onClick={()=>props.history.goBack()}>back to log in</button>
         </div>
       </div>
-      
-      <div>
-        {massagesToTheuser}
-      </div>
-      {/* <div>
-       
-           {imgUrl? <Image cloudName="dten2xlir"  publicId={imgUrl}/> : null} 
-      </div> */}
     </div>
     
   )

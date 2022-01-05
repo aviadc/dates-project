@@ -26,7 +26,7 @@ function Login(props) {
     if(user){
       if(password===user.password){
         localStorage.setItem("currentUser",JSON.stringify(user))
-        props.history.push(`/users/${user.key}`);
+        props.history.push(`/matched/${user.key}`);
       }else{
         console.log("password incorrect")
       }
