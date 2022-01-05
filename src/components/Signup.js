@@ -179,7 +179,7 @@ function Signup(props) {
         context.setUsersList([...context.usersList,user]);
         localStorage.setItem("currentUser",JSON.stringify(user));
         await datesApi.post("dates",user);
-        props.history.push(`/matched/${user.key}`);
+        props.history.push(`/matched}`);
         console.log(props);
       }catch(e){
         console.log(e);

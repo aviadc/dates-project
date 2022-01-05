@@ -1,6 +1,7 @@
 import React ,{useState, useEffect,createContext} from 'react'
 import axios from 'axios';
 import datesApi from './Api';
+import { v4 as uuidv4 } from 'uuid';
 
 export const UserListContext = createContext();
 
@@ -9,7 +10,8 @@ function UsersListContextProvider(props) {
  const [usersList,setUsersList] = useState([]);
     useEffect(()=>{
       const createusers = async ()=>{
-        const myHobbies = ["reading","hiking","tv","sport","music","computers","writing","space","architecture",
+        const myHobbies = ["reading","hiking","tv",
+        "sport","music","computers","writing","space","architecture",
         "caffe","dancing","extreme","cooking","fashion",
         "history","drawing","army","gadgets","scienceFiction","gaming"];
         const randomNumber = (from,to)=>{
@@ -29,13 +31,19 @@ function UsersListContextProvider(props) {
                 firstName: user.name.first,
                 lastName: user.name.last,
                 age: user.dob.age,
-                phoneNumber: user.phone,
+                phoneNumber: [randomNumber(0,10),randomNumber(0,10),
+                  randomNumber(0,10),randomNumber(0,10),randomNumber(0,10),
+                  randomNumber(0,10),randomNumber(0,10),randomNumber(0,10),
+                  randomNumber(0,10),
+                  randomNumber(0,10),].join(''),
                 gender: user.gender,
                 lookingFor: user.gender==="male"? "female":"male",
                 hobbies: [myHobbies[randomNumber(0,4)],myHobbies[randomNumber(4,4)],
                 myHobbies[randomNumber(8,4)],myHobbies[randomNumber(12,4)],myHobbies[randomNumber(16,4)]],
                 imgUrl: user.picture.medium,
-                key:user.login.uuid,
+                key: uuidv4(),
+                likes: [],
+                likedMe: [],
               }
               try{
                 const data = await datesApi.post("dates",date);
@@ -63,7 +71,7 @@ function UsersListContextProvider(props) {
         // createusers(); 
         fetch();
       }
-    },[])
+    },[setUsersList])
   
 
   return (

@@ -1,3 +1,26 @@
+/* font-family: 'Roboto', sans-serif;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Source Sans Pro', sans-serif; */
 *{
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+button{
+  cursor: pointer;
+  /* padding: 0.5rem; */
+  padding: 0.3rem 1.6rem;
+  border-radius: 20px;
+  background-color: #0035CC;
+  color: white;
+  font-size: 1rem;
+}
+
+button:hover{
+  opacity: 0.7;
+}
+
+.input-text{
+  font-size: 1.6rem;
+  border-radius: 5px;
 }
