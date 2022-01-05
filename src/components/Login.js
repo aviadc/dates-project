@@ -69,7 +69,7 @@ function Login(props) {
         <div className='error'>{passwordError}</div>
         <button onClick={login}>Log In</button>
         <button onClick={local}>local</button>
-        <h3>didn't have an acount? <Link to={"/signup"} > Sign up </Link> </h3>
+        <h3>didn't have an account? <Link to={"/signup"} > Sign up </Link> </h3>
       </div>
     </div>
   )

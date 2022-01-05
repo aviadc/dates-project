@@ -205,34 +205,34 @@ function Signup(props) {
   }
   return (
     <div className='signup-container'>
+      <h3 className='signup-title'>Sign up</h3>
       <div className='signup-form'> 
-        <h3>Sign up</h3>
         <div>
-          email <input type="email" onChange={(e)=>setEmail(e.target.value)}/> 
+          <input className='input-text-signup' type="email" placeholder="email" onChange={(e)=>setEmail(e.target.value)}/> 
           <span>{emailError}</span>
         </div>
         <div>
-          Password <input type="password" placeholder='minimum 6 digits' onChange={(e)=>setPassword(e.target.value)}/>
+          <input className='input-text-signup' type="password" placeholder='password (min 6 digits)' onChange={(e)=>setPassword(e.target.value)}/>
           <span>{passwordError}</span>
         </div>
         <div>
-          first name <input type="text" onChange={(e)=>setFirstName(e.target.value)}/>
+           <input className='input-text-signup' type="text" placeholder="first name" onChange={(e)=>setFirstName(e.target.value)}/>
           <span>{firstNameError}</span>
         </div>
         <div>
-          last name <input type="text" onChange={(e)=>setLastName(e.target.value)}/>
+          <input className='input-text-signup' type="text" placeholder="last name" onChange={(e)=>setLastName(e.target.value)}/>
           <span>{lastNameError}</span>
         </div>
         <div>
-          phone number <input type="text" placeholder='10 digits' onChange={(e)=>setPhoneNumber(e.target.value)}/>
+          <input className='input-text-signup' type="text" placeholder='phone number (10 digits)' onChange={(e)=>setPhoneNumber(e.target.value)}/>
           <span>{phoneNumberError}</span>
         </div>
         <div>
-          age <input type="text" onChange={(e)=>setAge(e.target.value)}/>
+          <input className='input-text-signup' type="text"  placeholder='age' onChange={(e)=>setAge(e.target.value)}/>
           <span>{ageError}</span>
         </div>
         <div>
-          <select onChange={(e)=>setGender(e.target.value)}>
+          <select className='input-text-signup' onChange={(e)=>setGender(e.target.value)}>
             <option>gender:</option>
             <option value="male">male</option>
             <option value="female">femael</option>  
@@ -240,7 +240,7 @@ function Signup(props) {
           <span>{genderError}</span>
         </div>
         <div>
-          <select onChange={(e)=>setLookingFor(e.target.value)}>
+          <select className='input-text-signup' onChange={(e)=>setLookingFor(e.target.value)}>
             <option>looking for:</option>
             <option value="male">male</option>
             <option value="female">femael</option>  
@@ -249,9 +249,9 @@ function Signup(props) {
         </div>
         <div>
           <form>
-            <h3>Hobbies (pick 5)</h3>
+            <h3 className='signup-inner-title'>Hobbies (pick 5)</h3>
             <span>{hobbiesError}</span>
-            <div>
+            <div className='hobbies-div'>
               <input type="checkbox" id="reading" name="reading" onChange={handleHobbies} />
               <label htmlFor="reading">reading</label>
               <input type="checkbox" id="hiking" name="hiking" onChange={handleHobbies}/>
@@ -263,7 +263,7 @@ function Signup(props) {
               <input type="checkbox" id="music" name="music" onChange={handleHobbies}/>
               <label htmlFor="music">music</label>
             </div>
-            <div>
+            <div className='hobbies-div'>
               <input type="checkbox" id="computers" name="computers" onChange={handleHobbies} />
               <label htmlFor="computers">computers</label>
               <input type="checkbox" id="writing" name="writing" onChange={handleHobbies}/>
@@ -275,7 +275,7 @@ function Signup(props) {
               <input type="checkbox" id="caffe" name="caffe" onChange={handleHobbies}/>
               <label htmlFor="caffe">caffe</label>
             </div>
-            <div>
+            <div className='hobbies-div'>
               <input type="checkbox" id="dancing" name="dancing" onChange={handleHobbies} />
               <label htmlFor="dancing">dancing</label>
               <input type="checkbox" id="extreme" name="extreme" onChange={handleHobbies}/>
@@ -287,7 +287,7 @@ function Signup(props) {
               <input type="checkbox" id="history" name="history" onChange={handleHobbies}/>
               <label htmlFor="history">history</label>
             </div>
-            <div>
+            <div className='hobbies-div'>
               <input type="checkbox" id="drawing" name="drawing" onChange={handleHobbies} />
               <label htmlFor="drawing">drawing</label>
               <input type="checkbox" id="army" name="army" onChange={handleHobbies}/>
@@ -295,14 +295,14 @@ function Signup(props) {
               <input type="checkbox" id="gadgets" name="gadgets" onChange={handleHobbies}/>
               <label htmlFor="gadgets">gadgets</label>
               <input type="checkbox" id="scienceFiction" name="scienceFiction" onChange={handleHobbies}/>
-              <label htmlFor="scienceFiction">scienceFiction</label>
+              <label htmlFor="scienceFiction">Sci-Fi</label>
               <input type="checkbox" id="gaming" name="gaming" onChange={handleHobbies}/>
               <label htmlFor="gaming">gaming</label>
             </div>
           </form>
         </div>
         <div>
-        <h3>image</h3>
+        <h3 className='signup-inner-title'>image</h3>
         <span>{imageError}</span>
           <input type="file" onChange={(e)=>setImage(e.target.files[0])}/>
           <button onClick={uploadImage}>upload image</button>  
