@@ -2,7 +2,6 @@ import React , {useState,useContext} from 'react'
 import "./login.css"
 import { Link } from 'react-router-dom';
 import {UserListContext} from './UsersListContext';
-import datesApi from './Api';
 import "../index.css"
 
 
@@ -40,14 +39,6 @@ function Login(props) {
       setEmailError("email incorrect");
     }
   }
-
-  const randomNumber = (from,to)=>{
-    return Math.floor(Math.random()*to)+from
-  }
-
-  
-
-
 
   const local = ()=>{
     console.log(localStorage);

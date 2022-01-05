@@ -9,6 +9,7 @@ function Navbar(props) {
   const [visibilty,setVisibilty] = useState("hidden");
 
   const context = useContext(UserListContext);
+  console.log(context);
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const handleLogOut = ()=>{
     localStorage.clear();

@@ -1,4 +1,4 @@
-import React , {useState,useContext} from 'react'
+import React , {useContext} from 'react'
 import Navbar from './Navbar';
 import {UserListContext} from './UsersListContext';
 import {Image} from 'cloudinary-react';

@@ -2,12 +2,11 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  
 } from "react-router-dom";
 import "../index.css"
 import Login from "./Login";
 import Signup from "./Signup";
-import Users from "./Users";
 import Matched from "./Matched";
 import UsersListContextProvider from "./UsersListContext";
 import Likes from "./Likes";

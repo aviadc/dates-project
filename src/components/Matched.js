@@ -1,4 +1,4 @@
-import React , {useState,useContext, useEffect} from 'react'
+import React , {useState,useContext} from 'react'
 import {UserListContext} from './UsersListContext';
 import {Image} from 'cloudinary-react';
 import "./matched.css"

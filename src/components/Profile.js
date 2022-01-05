@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './Navbar';
 
 function Profile() {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  // const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   return (
     <div>
       <Navbar />
