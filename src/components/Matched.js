@@ -34,8 +34,8 @@ function Matched(props) {
   const handleLike = async (user)=>{
     // console.log(user.firstName);
     try{
-      const likedme = [[...user.likedMe],currentUser.firstName];
-      const likes = [...currentUser.likes,user.firstName];
+      const likedme = [[...user.likedMe],currentUser.key];
+      const likes = [...currentUser.likes,user.key];
       await datesApi.put(`dates/${user.id}`,{likedMe: likedme});
       updateUser(user,"likedMe",likedme);
       await datesApi.put(`dates/${currentUser.id}`,{likes: likes});
@@ -52,8 +52,11 @@ function Matched(props) {
     const listWithoutMe = context.usersList.filter((user)=>{
       return user.key!==currentUser.key;
     })
-    return listWithoutMe.filter((user)=>{
+    const tempList = listWithoutMe.filter((user)=>{
       return comapreArr(currentUser.hobbies,user.hobbies);
+    })
+    return tempList.filter((user)=>{
+      return user.lookingFor===currentUser.gender&&currentUser.lookingFor===user.gender
     })
   }
 

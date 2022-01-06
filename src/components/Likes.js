@@ -9,19 +9,26 @@ function Likes() {
 
   const liked = ()=>{
     return context.usersList.filter((user)=>{
-      return user.likes.includes(currentUser.firstName);
+      return user.likes.includes(currentUser.key);
     })
   }
 
   const displayUsers = ()=>{
     return liked().map((user)=>{
       return <div className='card' key={user.key}>
-        <Image cloudName="dten2xlir"  publicId={user.imgUrl}/>
-        <h4>{user.firstName}</h4>
-        <h4>{user.age}</h4>
-        <h4>{user.hobbies.join(' ')}</h4>
-        <button>more details</button>
-        <button >like</button>
+       <div className='card-imgDetails-container'>
+          <div>
+            <Image cloudName="dten2xlir"  publicId={user.imgUrl} height="80" width="80"/>
+          </div>
+          <div className='card-main-details'>
+            <h4>{`${user.firstName}  ${user.lastName}`}</h4>
+            <h4>{user.age}</h4>
+            <h4>phone:{user.phoneNumber}</h4>
+          </div>
+        </div>
+        <h4>hobbies: {user.hobbies.join(' ')}</h4>
+        {/* <button>more details</button> */}
+        <button onClick={()=>true} >like</button>
       </div>
     })
   }

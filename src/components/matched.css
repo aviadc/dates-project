@@ -1,5 +1,7 @@
 .card{
   border: 1px solid black;
+  width: 35vh;
+  border-radius: 15px ;
 }
 
 .matched-container{
@@ -9,9 +11,6 @@
   
 }
 
-.card{
-  border-radius: 15px ;
-}
 
 .card-imgDetails-container{
   display: flex;
