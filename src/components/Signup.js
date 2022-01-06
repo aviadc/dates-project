@@ -176,7 +176,7 @@ function Signup(props) {
         key: uuidv4(),
       }
       try{
-        context.setUsersList([...context.usersList,user]);
+        context.setUsersList((prev)=>[...prev.usersList,user]);
         localStorage.setItem("currentUser",JSON.stringify(user));
         await datesApi.post("dates",user);
         props.history.push(`/matched`);
