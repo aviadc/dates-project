@@ -77,10 +77,11 @@ function Navbar(props) {
           <li className='navbar-list-li'> <Link to={`/matched`}>Matched</Link> </li>
           <li className='navbar-list-li'> <Link to={`/likes`}>Liked me</Link> </li>
           <li className='navbar-list-li'> <Link to={`/profile`}>profile</Link> </li>
-          <li> <button onClick={handleLogOut}><a href='/' className='logout'>log out</a></button> </li>
-          <li> <button onClick={showDeleteWindow}>Delete user</button> </li>
-          <li> <button><Link to={"/"}> back to log in</Link> </button> </li>
         </ul>
+          <div className='navbar-btn'>
+            <button onClick={handleLogOut}><a href='/' className='logout'>log out</a></button>
+            <button onClick={showDeleteWindow}>Delete user</button> 
+          </div>
         <div className='delete-window' style={{visibility: visibilty}}>
            <h2> ARE YOU SURE </h2>
            <div>
