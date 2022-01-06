@@ -40,9 +40,9 @@ function Login(props) {
     }
   }
 
-  const local = ()=>{
-    console.log(localStorage);
-  }
+  // const local = ()=>{
+  //   console.log(localStorage);
+  // }
 
   
   return (
@@ -59,7 +59,7 @@ function Login(props) {
         </div>
         <div className='error'>{passwordError}</div>
         <button onClick={login}>Log In</button>
-        <button onClick={local}>local</button>
+        {/* <button onClick={local}>local</button> */}
         <h3>didn't have an account? <Link to={"/signup"} > Sign up </Link> </h3>
       </div>
     </div>
